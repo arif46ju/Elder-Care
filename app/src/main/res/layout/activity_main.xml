@@ -17,20 +17,22 @@
 
        <Button
            android:id="@+id/button1"
-           android:layout_width="170sp"
-           android:layout_height="215sp"
+           android:layout_width="170dp"
+           android:layout_height="190dp"
            android:layout_marginRight="10dp"
            android:text="Daily Activities"
            tools:layout_editor_absoluteX="89sp"
-           tools:layout_editor_absoluteY="61sp" />
+           tools:layout_editor_absoluteY="61sp"
+           android:background="@drawable/gradient1"/>
 
        <Button
            android:id="@+id/button2"
-           android:layout_width="180sp"
-           android:layout_height="215sp"
+           android:layout_width="170dp"
+           android:layout_height="190dp"
            android:text="Medications"
            tools:layout_editor_absoluteX="254sp"
-           tools:layout_editor_absoluteY="61sp" />
+           tools:layout_editor_absoluteY="61sp"
+           android:background="@drawable/gradient2"/>
 
    </RadioGroup>
     <RadioGroup
@@ -42,16 +44,18 @@
         <Button
             android:id="@+id/button3"
             android:layout_width="170sp"
-            android:layout_height="215sp"
+            android:layout_height="190dp"
             android:layout_marginRight="10dp"
             android:text="Grocery List"
             tools:layout_editor_absoluteX="89sp"
-            tools:layout_editor_absoluteY="61sp" />
+            tools:layout_editor_absoluteY="61sp"
+            android:background="@drawable/gradient3"/>
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="180sp"
-            android:layout_height="215sp"
+            android:layout_width="170sp"
+            android:layout_height="190dp"
+            android:background="@drawable/gradient4"
             android:text="Online Shopping"
             tools:layout_editor_absoluteX="254sp"
             tools:layout_editor_absoluteY="61sp" />
@@ -65,6 +69,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="#ffff"
+            android:layout_marginTop="10dp"
 
 
             >
@@ -72,9 +77,11 @@
             <Button
                 android:id="@+id/button5"
                 android:layout_width="65sp"
-                android:background="@drawable/home_button"
+
                 android:layout_height="70sp"
                android:layout_marginRight="5sp"
+
+
                 />
 
             <Button
@@ -89,7 +96,7 @@
                 android:id="@+id/button7"
                 android:layout_width="65sp"
                 android:layout_height="70sp"
-                android:background="@drawable/about_logo"
+
                 android:layout_marginRight="5sp"
                 />
 
@@ -98,7 +105,7 @@
                 android:layout_width="65sp"
                 android:layout_height="70sp"
                 android:layout_marginRight="5sp"
-                android:background="@drawable/contacts"
+
                 />
 
             <Button
