@@ -26,6 +26,7 @@
            android:layout_height="match_parent"
            android:layout_marginRight="10dp"
            android:text="Daily Activities"
+           android:background="@drawable/gradient1"
            />
 
        <Button
@@ -35,7 +36,8 @@
            android:layout_height="match_parent"
            android:text="Medications"
            tools:layout_editor_absoluteX="254sp"
-           tools:layout_editor_absoluteY="61sp" />
+           tools:layout_editor_absoluteY="61sp"
+           android:background="@drawable/gradient2"/>
 
    </RadioGroup>
     <RadioGroup
@@ -54,7 +56,8 @@
             android:layout_marginRight="10dp"
             android:text="Grocery List"
             tools:layout_editor_absoluteX="89sp"
-            tools:layout_editor_absoluteY="61sp" />
+            tools:layout_editor_absoluteY="61sp"
+            android:background="@drawable/gradient3"/>
 
         <Button
             android:id="@+id/button4"
@@ -63,67 +66,60 @@
             android:layout_height="match_parent"
             android:text="Online Shopping"
             tools:layout_editor_absoluteX="254sp"
-            tools:layout_editor_absoluteY="61sp" />
+            tools:layout_editor_absoluteY="61sp"
+            android:background="@drawable/gradient2"/>
 
    </RadioGroup>
 
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="#ffff"
+        android:orientation="horizontal"
+        android:weightSum="5" >
 
-        <RadioGroup
-            android:weightSum="5"
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5sp"
             android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#ffff"
+            android:background="@drawable/home" />
 
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5sp"
+            android:layout_weight="1"
+            android:background="@drawable/settings" />
 
-            >
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5sp"
+            android:layout_weight="1"
+            android:background="@drawable/about_us" />
 
-            <Button
-                android:layout_weight="1"
-                android:id="@+id/button5"
-                android:layout_width="0dp"
-                android:background="@drawable/home"
-                android:layout_height="50sp"
-               android:layout_marginRight="5sp"
-                />
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5sp"
+            android:layout_weight="1"
+            android:background="@drawable/contacts" />
 
-            <Button
-                android:layout_weight="1"
-                android:id="@+id/button6"
-                android:layout_width="0dp"
-                android:layout_height="50sp"
-                android:layout_marginRight="5sp"
-                android:background="@drawable/settings"
-                />
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="50sp"
-                android:background="@drawable/about_us"
-                android:layout_marginRight="5sp"
-                />
-
-            <Button
-                android:layout_weight="1"
-                android:id="@+id/button9"
-                android:layout_width="0dp"
-                android:layout_height="50sp"
-                android:layout_marginRight="5sp"
-                android:background="@drawable/contacts"
-                />
-
-            <Button
-                android:layout_weight="1"
-                android:id="@+id/button8"
-                android:layout_width="0dp"
-                android:layout_height="50sp"
-                android:background="@drawable/notofication_bell"
-               />
-        </RadioGroup>
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/notofication_bell" />
+    </RadioGroup>
 
 
 
