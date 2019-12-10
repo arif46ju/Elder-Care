@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:weightSum="20"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:weightSum="2"
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:text="Daily Activities"
+            android:background="@drawable/gradient1"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Medications"
+            tools:layout_editor_absoluteX="254sp"
+            tools:layout_editor_absoluteY="61sp"
+            android:background="@drawable/gradient2"/>
+
+    </RadioGroup>
+    <RadioGroup
+        android:layout_weight="10"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:text="Grocery List"
+            tools:layout_editor_absoluteX="89sp"
+            tools:layout_editor_absoluteY="61sp"
+            android:background="@drawable/gradient3"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Online Shopping"
+            tools:layout_editor_absoluteX="254sp"
+            tools:layout_editor_absoluteY="61sp"
+            android:background="@drawable/gradient2"/>
+
+    </RadioGroup>
+</LinearLayout>
