@@ -10,12 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"></activity>
+            android:name=".dailyActivitiesList"
+            android:label="@string/title_activity_daily_activities_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".OnlineShoppingActivity" />
         <activity android:name=".GroceryActivity" />
         <activity android:name=".MedicationsActivity" />
         <activity android:name=".DailyActivitiesActivity" />
-        <activity android:name=".NavigationActivity"
+        <activity
+            android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,9 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
     </application>
 
 </manifest>
