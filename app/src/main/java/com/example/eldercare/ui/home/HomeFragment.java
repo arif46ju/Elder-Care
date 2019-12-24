@@ -6,20 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.eldercare.DailyActivitiesActivity;
 import com.example.eldercare.GroceryActivity;
 import com.example.eldercare.MedicationsActivity;
 import com.example.eldercare.OnlineShoppingActivity;
 import com.example.eldercare.R;
+import com.example.eldercare.dailyActivitiesList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -48,7 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button1) {
-            Intent intent = new Intent(getContext(), DailyActivitiesActivity.class);
+            Intent intent=new Intent(getContext(), dailyActivitiesList.class);
             startActivity(intent);
         }
         if (v.getId() == R.id.button2) {

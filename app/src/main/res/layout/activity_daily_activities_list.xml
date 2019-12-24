@@ -5,15 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".dailyActivitiesList">
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="activity list"
-        />
 
 
     <ListView
+        android:background="#B0B4C7"
         android:id="@+id/listViewID"
         android:divider="#ff22"
         android:dividerHeight="2dp"

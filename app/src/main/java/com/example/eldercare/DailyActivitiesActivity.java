@@ -1,16 +1,14 @@
 package com.example.eldercare;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DailyActivitiesActivity extends AppCompatActivity implements View.OnClickListener {
 EditText id,activity;
@@ -31,6 +29,9 @@ databaseHelper myDb;
         update.setOnClickListener(this);
         delete.setOnClickListener(this);
         view.setOnClickListener(this);
+
+
+
 
     }
 
@@ -60,8 +61,10 @@ databaseHelper myDb;
 
         }
         else if(v.getId()==R.id.view){
-            Intent intent=new Intent(getApplicationContext(),dailyActivitiesList.class);
+           Intent intent=new Intent(getApplicationContext(),dailyActivitiesList.class);
             startActivity(intent);
+
+/*
             Cursor res = myDb.getAllData();
             if(res.getCount() == 0) {
                 // show message
@@ -77,7 +80,7 @@ databaseHelper myDb;
             }
 
             // Show all data
-            showMessage("Data",buffer.toString());
+            showMessage("Data",buffer.toString());*/
         }
 
     }

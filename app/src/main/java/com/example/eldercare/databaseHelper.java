@@ -15,7 +15,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     public static final String id="_id";
     public static final String activities="Activities";
     public static final String time="TIME";
-    public static final int version=2;
+    public  static int version=11;
     public static  String createTable="CREATE TABLE "+tableName+"("+id+" INTEGER  PRIMARY KEY AUTOINCREMENT,"+activities+" TEXT); ";
     public static final String dropTable="DROP TABLE IF EXISTS "+tableName;
     private Context context;
@@ -77,6 +77,14 @@ public class databaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+tableName,null);
         return res;
+    }
+    public void deleteAll()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // db.delete(TABLE_NAME,null,null);
+        db.execSQL("delete from "+ tableName);
+       // db.execSQL("TRUNCATE table" + TABLE_NAME);
+        db.close();
     }
 
 
