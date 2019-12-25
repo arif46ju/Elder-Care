@@ -48,12 +48,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }
         if (v.getId() == R.id.button2) {
-            Intent intent = new Intent(getContext(), MedicationsActivity.class);
-            startActivity(intent);
+            try {
+                Intent intent = new Intent(getContext(), MedicationsActivity.class);
+                startActivity(intent);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
         if (v.getId() == R.id.button3) {
-            Intent intent = new Intent(getContext(), GroceryActivity.class);
-            startActivity(intent);
+            try {
+                Intent intent = new Intent(getContext(), GroceryActivity.class);
+                startActivity(intent);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
         if (v.getId() == R.id.button4) {
             Intent intent = new Intent(getContext(), OnlineShoppingActivity.class);

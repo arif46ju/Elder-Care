@@ -52,12 +52,8 @@ public class dailyActivitiesList extends AppCompatActivity implements ExampleDia
             }
         }
 
-
-
         adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.daily_list_sample_layout,R.id.textViewID, countryNames);
         listView.setAdapter(adapter);
-
-
         ListView f_listview = new ListView(getApplicationContext());
         List<String> f_option = new ArrayList<>();
         f_option.add("Delete");
