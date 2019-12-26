@@ -5,12 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DailyActivitiesActivity"
+    android:gravity="center"
     android:orientation="vertical">
 
-
-    <EditText
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Shop Here"
+    android:textColor="#2922FF"
+    android:textSize="40dp"
+    android:textAlignment="center"
+    android:layout_marginTop="30dp"
+    android:paddingBottom="50dp"
+/>
+    <Button
+        android:id="@+id/daraz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Online Shopping list"/>
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#1CC9DF"
+        android:text="daraz"
+        android:background="#F1F1E4"
+        android:layout_marginBottom="15dp"
+
+        />
+    <Button
+        android:id="@+id/aliexpress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#1CC9DF"
+        android:text="Ali Express"
+        android:background="#F1F1E4"
+        android:layout_marginBottom="15dp"
+
+        />
+    <Button
+        android:id="@+id/foodpanda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#1CC9DF"
+        android:text="order food"
+        android:background="#F1F1E4"
+        android:layout_marginBottom="15dp"
+
+        />
+
+    <Button
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#1CC9DF"
+        android:text="search nearby"
+        android:background="#F1F1E4"
+
+        />
 
 </LinearLayout>
