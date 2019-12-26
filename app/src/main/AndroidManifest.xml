@@ -21,15 +21,22 @@
             android:label="@string/title_activity_daily_activities_list"
             android:theme="@style/AppTheme" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".OnlineShoppingActivity" />
-        <activity android:name=".GroceryActivity" />
-        <activity android:name=".MedicationsActivity" />
+        <activity android:name=".OnlineShoppingActivity"
+            android:label="@string/title_activity_onlineShopping"/>
+
+        <activity android:name=".GroceryActivity"
+            android:label="@string/title_activity_grocery"/>
+
+        <activity android:name=".MedicationsActivity"
+            android:label="@string/title_activity_medication"/>
+
         <activity
             android:name=".DailyActivitiesActivity"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".SplashScreen"
-            android:label="@string/title_activity_navigation"
+            android:label="@string/title_activity_splashscreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

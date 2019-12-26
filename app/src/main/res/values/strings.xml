@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ElderCare</string>
     <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_activity_splashscreen">SplashScreenActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Elder Care</string>
@@ -15,6 +16,10 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_daily_activities_list">Your Activities Today</string>
+    <string name="title_activity_medication">Your Medications Today</string>
+    <string name="title_activity_grocery">Your Grocery List</string>
+    <string name="title_activity_onlineShopping">Online Shopping</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
