@@ -24,8 +24,8 @@ public class ExampleDialog extends AppCompatDialogFragment {
         View view=inflater.inflate(R.layout.edit_layout,null);
         editActivity=view.findViewById(R.id.editactivity);
         editId=view.findViewById(R.id.editID);
-       editId.setText(id);
-       editActivity.setText(activity);
+        editId.setText(id);
+        editActivity.setText(activity);
         builder.setView(view)
                 .setCancelable(false)
                 .setPositiveButton("save", new DialogInterface.OnClickListener() {

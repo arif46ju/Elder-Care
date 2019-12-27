@@ -3,11 +3,17 @@ package com.example.eldercare;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,9 +21,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MedicationsActivity extends AppCompatActivity implements ExampleDialog1.ExampleDialogListener {
@@ -48,11 +57,35 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
                 String c1,c2;
                 c1=res.getString(1);
                 c2=res.getString(2);
-                if(c1.length()<=15){
-                    String tmp="                   ";
-                    c1=c1+tmp.substring(0,19-c1.length()-1);
+                int h,m;
+                h=Integer.parseInt(c2.substring(0,2));
+                m=Integer.parseInt(c2.substring(3,5));
+                //Toast.makeText(this,"current time: "+Calendar.getInstance().getTimeInMillis()/(1000*3600),Toast.LENGTH_LONG).show();
+                if(c1.length()<=25){
+                    String tmp="                          ";
+                    c1=c1+tmp.substring(0,26-c1.length());
                 }
-                countryNames.add(res.getString(0) + "      " + c1 + "       " + res.getString(2));
+                countryNames.add(res.getString(0) + "      " + c1 + "" + res.getString(2));
+                //set Alarm
+                Calendar calendar=Calendar.getInstance();
+                //for alerm
+                try {
+                    calendar.set(
+                            calendar.get(Calendar.YEAR),
+                            calendar.get(Calendar.MONTH),
+                            calendar.get(Calendar.DAY_OF_MONTH),
+                            h,
+                            m,
+                            0
+                    );
+                    if(calendar.before(Calendar.getInstance())){
+                        calendar.add(Calendar.DAY_OF_MONTH,1);
+                    }
+                    setAlarm(calendar.getTimeInMillis());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
 
 
             }
@@ -131,6 +164,20 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
 
 
     }
+
+    private void setAlarm(long timeInMillis) {
+        AlarmManager alarmManager= (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent=new Intent(MedicationsActivity.this,myAlarm.class);
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(MedicationsActivity.this,0,intent,0);
+     if(Calendar.getInstance().getTimeInMillis()<=timeInMillis){
+         alarmManager.setExact(AlarmManager.RTC,timeInMillis,pendingIntent);
+     }
+        /*Toast.makeText(this,"current time: "+Calendar.getInstance().getTimeInMillis() /(1000*60)+" alerm time: "+timeInMillis/(1000*60),
+                Toast.LENGTH_LONG).show();*/
+
+    }
+
+
     public void openDialog(){
 
         exampleDialog.id=itemId;

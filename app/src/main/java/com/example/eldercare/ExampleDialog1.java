@@ -1,16 +1,20 @@
 package com.example.eldercare;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import java.util.Calendar;
@@ -18,6 +22,7 @@ import java.util.Calendar;
 public class ExampleDialog1 extends AppCompatDialogFragment {
     private EditText editmedicin,editId,editTime;
     String id,medicin,time;
+
     private ExampleDialog1.ExampleDialogListener listener;
 
     @Override
@@ -35,16 +40,39 @@ public class ExampleDialog1 extends AppCompatDialogFragment {
         editTime.setOnClickListener(new View.OnClickListener() {
             Calendar calendar=Calendar.getInstance();
             final int hour=calendar.get(Calendar.HOUR_OF_DAY);
-            final int minute=calendar.get(Calendar.MINUTE);
+            final int minute1=calendar.get(Calendar.MINUTE);
             @Override
             public void onClick(View v) {
                 TimePickerDialog timePickerDialog=new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        editTime.setText(hourOfDay+":"+minute);
+                        StringBuffer tmp1,tmp2;
+                        tmp1=new StringBuffer();
+                        tmp2=new StringBuffer();
+                        editTime.setText("");
+
+                        if(hourOfDay<10){
+                           tmp1.append("0"+hourOfDay) ;
+                        }
+                        else tmp1.append(hourOfDay);
+                        if(minute<10){
+                            tmp2.append("0"+minute);
+                        }
+                        else{
+                            tmp2.append(minute);
+                        }
+
+                        editTime.setText(tmp1+":"+tmp2);
+                        tmp1=null;
+                        tmp2=null;
+
+
+
+
                     }
-                },hour,minute ,android.text.format.DateFormat.is24HourFormat(getContext()));
+                },hour,minute1 ,android.text.format.DateFormat.is24HourFormat(getContext()));
                 timePickerDialog.show();
+
             }
         });
         builder.setView(view)
@@ -55,9 +83,13 @@ public class ExampleDialog1 extends AppCompatDialogFragment {
                         String editTextId=editId.getText().toString();
                         String editTextActivity=editmedicin.getText().toString();
                         String editTextTime=editTime.getText().toString();
+
                         listener.applyText(editTextId,editTextActivity,editTextTime);
                        // listener.applyText(editTextId,editTextActivity,editTextTime);
                         listener.applyText(editTextActivity,editTextTime);
+
+
+
                     }
                 })
                 .setNeutralButton("cancel", new DialogInterface.OnClickListener() {
@@ -69,7 +101,9 @@ public class ExampleDialog1 extends AppCompatDialogFragment {
 
         return builder.create();
 
-    };
+    }
+
+
 
     @Override
     public void onAttach(Context context) {
