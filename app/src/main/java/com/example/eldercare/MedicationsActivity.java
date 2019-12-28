@@ -34,6 +34,7 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
     private ListView listView;
     public String itemId,medicin,time;
     databaseHelper myDb;
+
     SQLiteDatabase db;
     ArrayList<String> countryNames = new ArrayList<>();
     ArrayAdapter<String> adapter, f_adapter;
@@ -47,12 +48,13 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
         listView = findViewById(R.id.listViewID);
         addNew=findViewById(R.id.addNew);
         myDb = new databaseHelper(this);
-        final Cursor res = myDb.getAllMedicin();
+       final Cursor res = myDb.getAllMedicin();
 
         if (res.getCount() == 0) {
             Toast.makeText(getApplicationContext(), "no Medication found", Toast.LENGTH_LONG).show();
         } else {
-            countryNames.add("ID" + "     " + "Medication" + "         " + "Time");
+            countryNames.add("ID" + "     " + "Medication" + "            " + "Time");
+            int cnt=0;
             while (res.moveToNext()) {
                 String c1,c2;
                 c1=res.getString(1);
@@ -61,11 +63,11 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
                 h=Integer.parseInt(c2.substring(0,2));
                 m=Integer.parseInt(c2.substring(3,5));
                 //Toast.makeText(this,"current time: "+Calendar.getInstance().getTimeInMillis()/(1000*3600),Toast.LENGTH_LONG).show();
-                if(c1.length()<=25){
-                    String tmp="                          ";
-                    c1=c1+tmp.substring(0,26-c1.length());
+                if(c1.length()<=15){
+                    String tmp="                   ";
+                    c1=c1+tmp.substring(0,15-c1.length());
                 }
-                countryNames.add(res.getString(0) + "      " + c1 + "" + res.getString(2));
+                countryNames.add(res.getString(0) + "      " + c1 + " " + res.getString(2));
                 //set Alarm
                 Calendar calendar=Calendar.getInstance();
                 //for alerm
@@ -81,7 +83,8 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
                     if(calendar.before(Calendar.getInstance())){
                         calendar.add(Calendar.DAY_OF_MONTH,1);
                     }
-                    setAlarm(calendar.getTimeInMillis());
+                    cnt++;
+                    setAlarm(calendar.getTimeInMillis(),cnt);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -114,8 +117,8 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 String value = adapter.getItem(position);
-                itemId=value.valueOf(value.substring(0,3));
-                medicin=value.valueOf(value.substring(6,value.length()-5));
+                itemId=value.valueOf(value.substring(0,8));
+                medicin=value.valueOf(value.substring(8,value.length()-5));
                 time=value.valueOf(value.substring(value.length()-5,value.length()));
                 // Toast.makeText(getApplicationContext(),itemid,Toast.LENGTH_LONG).show();
                 dialog.show();
@@ -165,13 +168,32 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
 
     }
 
-    private void setAlarm(long timeInMillis) {
-        AlarmManager alarmManager= (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent=new Intent(MedicationsActivity.this,myAlarm.class);
-        PendingIntent pendingIntent=PendingIntent.getBroadcast(MedicationsActivity.this,0,intent,0);
-     if(Calendar.getInstance().getTimeInMillis()<=timeInMillis){
-         alarmManager.setExact(AlarmManager.RTC,timeInMillis,pendingIntent);
-     }
+    private void setAlarm(long timeInMillis,int f) {
+        /*AlarmManager alarmManager= (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        ArrayList<PendingIntent> intentArray = new ArrayList<PendingIntent>();
+        for (int i=0;i<=10;i++){
+            Intent intent=new Intent(MedicationsActivity.this,myAlarm.class);
+            PendingIntent pendingIntent=PendingIntent.getBroadcast(MedicationsActivity.this,i,intent,0);
+            if(Calendar.getInstance().getTimeInMillis()<=timeInMillis){
+                alarmManager.setExact(AlarmManager.RTC,timeInMillis,pendingIntent);
+                intentArray.add(pendingIntent);
+            }
+        }
+*/
+        AlarmManager[] alarmManager=new AlarmManager[24];
+        ArrayList<PendingIntent>  intentArray = new ArrayList<PendingIntent>();
+
+            Intent intent = new Intent(MedicationsActivity.this, myAlarm.class);
+       PendingIntent pi=PendingIntent.getBroadcast(MedicationsActivity.this, f,intent, 0);
+
+            alarmManager[f] = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager[f].set(AlarmManager.RTC_WAKEUP,timeInMillis ,pi);
+
+            intentArray.add(pi);
+
+
+
+
         /*Toast.makeText(this,"current time: "+Calendar.getInstance().getTimeInMillis() /(1000*60)+" alerm time: "+timeInMillis/(1000*60),
                 Toast.LENGTH_LONG).show();*/
 

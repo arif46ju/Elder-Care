@@ -43,13 +43,15 @@ public class ExampleDialog1 extends AppCompatDialogFragment {
             final int minute1=calendar.get(Calendar.MINUTE);
             @Override
             public void onClick(View v) {
-                TimePickerDialog timePickerDialog=new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                final TimePickerDialog timePickerDialog=new TimePickerDialog(getContext(), android.R.style.Theme_Holo_Light_Dialog, new TimePickerDialog.OnTimeSetListener() {
+
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         StringBuffer tmp1,tmp2;
                         tmp1=new StringBuffer();
                         tmp2=new StringBuffer();
                         editTime.setText("");
+
 
                         if(hourOfDay<10){
                            tmp1.append("0"+hourOfDay) ;
@@ -71,6 +73,7 @@ public class ExampleDialog1 extends AppCompatDialogFragment {
 
                     }
                 },hour,minute1 ,android.text.format.DateFormat.is24HourFormat(getContext()));
+
                 timePickerDialog.show();
 
             }
