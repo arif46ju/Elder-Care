@@ -36,8 +36,10 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
     databaseHelper myDb;
 
     SQLiteDatabase db;
-    ArrayList<String> countryNames = new ArrayList<>();
-    ArrayAdapter<String> adapter, f_adapter;
+    ArrayList<String> id = new ArrayList<>();
+    ArrayList<String> medicinlist = new ArrayList<>();
+    ArrayList<String> timeList = new ArrayList<>();
+    ArrayAdapter<String> f_adapter;
     ExampleDialog1 exampleDialog=new ExampleDialog1();
     Menu addNew;
     int f=0;
@@ -53,9 +55,15 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
         if (res.getCount() == 0) {
             Toast.makeText(getApplicationContext(), "no Medication found", Toast.LENGTH_LONG).show();
         } else {
-            countryNames.add("ID" + "     " + "Medication" + "            " + "Time");
+            id.add("ID");
+            medicinlist.add("Medicin");
+            timeList.add("Time");
             int cnt=0;
             while (res.moveToNext()) {
+
+                id.add(res.getString(0));
+                medicinlist.add(res.getString(1));
+                timeList.add(res.getString(2));
                 String c1,c2;
                 c1=res.getString(1);
                 c2=res.getString(2);
@@ -63,11 +71,7 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
                 h=Integer.parseInt(c2.substring(0,2));
                 m=Integer.parseInt(c2.substring(3,5));
                 //Toast.makeText(this,"current time: "+Calendar.getInstance().getTimeInMillis()/(1000*3600),Toast.LENGTH_LONG).show();
-                if(c1.length()<=15){
-                    String tmp="                   ";
-                    c1=c1+tmp.substring(0,15-c1.length());
-                }
-                countryNames.add(res.getString(0) + "      " + c1 + " " + res.getString(2));
+
                 //set Alarm
                 Calendar calendar=Calendar.getInstance();
                 //for alerm
@@ -96,7 +100,7 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
 
 
 
-        adapter = new ArrayAdapter<String>(MedicationsActivity.this, R.layout.daily_list_sample_layout,R.id.textViewID, countryNames);
+       customAdapter1 adapter = new customAdapter1(MedicationsActivity.this, id,medicinlist,timeList);
         listView.setAdapter(adapter);
         ListView f_listview = new ListView(getApplicationContext());
         List<String> f_option = new ArrayList<>();
@@ -115,14 +119,14 @@ public class MedicationsActivity extends AppCompatActivity implements ExampleDia
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                String value = adapter.getItem(position);
-                itemId=value.valueOf(value.substring(0,8));
-                medicin=value.valueOf(value.substring(8,value.length()-5));
-                time=value.valueOf(value.substring(value.length()-5,value.length()));
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id1) {
+
+                itemId=id.get(position);
+                medicin=medicinlist.get(position);
+                time=timeList.get(position);
                 // Toast.makeText(getApplicationContext(),itemid,Toast.LENGTH_LONG).show();
                 dialog.show();
-                return false;
+                return true;
             }
         });
         f_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

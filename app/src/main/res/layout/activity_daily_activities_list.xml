@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +11,7 @@
     <ListView
         android:background="#B0B4C7"
         android:id="@+id/listViewID"
-        android:divider="#ff22"
+        android:divider="#E6D5D5"
         android:dividerHeight="2dp"
         android:listSelector="#6192D6"
         android:layout_width="match_parent"

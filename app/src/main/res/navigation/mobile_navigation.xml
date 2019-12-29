@@ -11,23 +11,49 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
+    <!--<fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.eldercare.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" />-->
+    <activity
+        android:id="@+id/nav_gallery"
+        android:name="com.example.eldercare.dailyActivitiesList"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/activity_daily_activities_list"
+        />
 
-    <fragment
+
+    <!--<fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.eldercare.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_slideshow" />-->
+    <activity
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.eldercare.GroceryActivity"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/activity_grocery"
+        />
 
-    <fragment
+
+   <!-- <fragment
         android:id="@+id/nav_tools"
         android:name="com.example.eldercare.ui.tools.ToolsFragment"
         android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_tools" />-->
+    <activity
+        android:id="@+id/nav_tools"
+        android:name="com.example.eldercare.MedicationsActivity"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/activity_medications"
+        />
+    <activity
+        android:id="@+id/nav_shopping"
+        android:name="com.example.eldercare.OnlineShoppingActivity"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/activity_online_shopping"
+        />
 
     <fragment
         android:id="@+id/nav_share"
@@ -40,4 +66,6 @@
         android:name="com.example.eldercare.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+
 </navigation>

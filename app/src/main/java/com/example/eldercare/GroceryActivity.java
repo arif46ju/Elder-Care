@@ -25,8 +25,9 @@ public class GroceryActivity extends AppCompatActivity implements ExampleDialog.
     public String itemId,itemActivity;
     databaseHelper myDb;
     SQLiteDatabase db;
-    ArrayList<String> countryNames = new ArrayList<>();
-    ArrayAdapter<String> adapter, f_adapter;
+    ArrayList<String> id = new ArrayList<>();
+    ArrayList<String> grocery = new ArrayList<>();
+    ArrayAdapter<String> f_adapter;
     ExampleDialog exampleDialog=new ExampleDialog();
     Menu addNew;
     int f=0;
@@ -42,17 +43,16 @@ public class GroceryActivity extends AppCompatActivity implements ExampleDialog.
         if (res.getCount() == 0) {
             Toast.makeText(getApplicationContext(), "no Activity found", Toast.LENGTH_LONG).show();
         } else {
-            countryNames.add("ID" + " \t " + "Item");
+           id.add("ID");
+           grocery.add("Grocery");
             while (res.moveToNext()) {
-
-                countryNames.add(res.getString(0) + " \t " + res.getString(1));
-
-
+                id.add(res.getString(0));
+                grocery.add(res.getString(1));
             }
         }
 
 
-        adapter = new ArrayAdapter<String>(GroceryActivity.this, R.layout.daily_list_sample_layout,R.id.textViewID, countryNames);
+      customAdapter  adapter = new customAdapter(GroceryActivity.this, id,grocery);
         listView.setAdapter(adapter);
 
         ListView f_listview = new ListView(getApplicationContext());
@@ -72,10 +72,10 @@ public class GroceryActivity extends AppCompatActivity implements ExampleDialog.
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                String value = adapter.getItem(position);
-                itemId=value.valueOf(value.substring(0,3));
-                itemActivity=value.valueOf(value.substring(4));
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id1) {
+                //String value = adapter.getItem(position);
+                itemId=id.get(position);
+                itemActivity=grocery.get(position);
                 // Toast.makeText(getApplicationContext(),itemid,Toast.LENGTH_LONG).show();
                 dialog.show();
                 return false;
