@@ -55,6 +55,7 @@ public class dailyActivitiesList extends AppCompatActivity implements ExampleDia
         }
       final customAdapter adapter = new customAdapter(getApplicationContext(), id,txt);
         listView.setAdapter(adapter);
+
         ListView f_listview = new ListView(getApplicationContext());
         List<String> f_option = new ArrayList<>();
         f_option.add("Delete");

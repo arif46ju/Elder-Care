@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eldercare.GroceryActivity;
 import com.example.eldercare.MedicationsActivity;
@@ -25,8 +24,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+       /* homeViewModel =
+                ViewModelProviders.of(this).get(HomeViewModel.class);*/
         View root = inflater.inflate(R.layout.fragment_home, container,false);
        button1=root.findViewById(R.id.button1);
        button2=root.findViewById(R.id.button2);
@@ -36,6 +35,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
        button2.setOnClickListener(this);
        button3.setOnClickListener(this);
        button4.setOnClickListener(this);
+
+
         return root;
     }
 
@@ -46,6 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if (v.getId() == R.id.button1) {
             Intent intent=new Intent(getContext(), dailyActivitiesList.class);
             startActivity(intent);
+
         }
         if (v.getId() == R.id.button2) {
             try {
