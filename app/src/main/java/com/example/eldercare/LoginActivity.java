@@ -59,6 +59,12 @@ public class LoginActivity extends AppCompatActivity {
         //enable back button
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+        try {
+            checkUserStatus();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         //before mauth
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -308,7 +314,7 @@ pd.dismiss();
 
         }
         else {
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            startActivity(new Intent(LoginActivity.this,NavigationActivity.class));
             finish();
         }
 
